@@ -3,85 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnTime-TIDE | Unified Stack</title>
+    <title>OnTime-TIDE | Live Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #02040a; color: white; font-family: sans-serif; }
-        .glow-cyan { text-shadow: 0 0 20px rgba(34, 211, 238, 0.5); }
+        body { background-color: #02040a; color: white; font-family: 'Courier New', Courier, monospace; }
+        .glow-cyan { text-shadow: 0 0 15px rgba(34, 211, 238, 0.4); }
+        .log-entry { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-[#02040a] relative overflow-hidden">
-    
+<body class="flex flex-col items-center justify-center min-h-screen bg-[#02040a] p-6 relative overflow-x-hidden">
+
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px]"></div>
 
-    <div class="relative z-10 text-center px-6">
-        <div class="mb-6 inline-block px-4 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-[10px] tracking-[0.4em] uppercase">
-            TISE ENGINE: SYNCHRONIZATION PENDING
-        </div>
-
-        <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4 bg-gradient-to-b from-white to-gray-600 bg-clip-text text-transparent">
+    <div class="relative z-10 w-full max-w-5xl text-center">
+        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 bg-gradient-to-b from-white to-gray-600 bg-clip-text text-transparent">
             ONTIME-TIDE™
         </h1>
 
-        <p class="max-w-2xl mx-auto text-gray-400 text-lg font-light leading-relaxed mb-12">
-            The World’s First Framework for <span class="text-white italic underline decoration-cyan-500">Absence-Based Intent</span>. 
-            Powered by DTIF Sensing and the TISE Engine.
-        </p>
+        <div class="mt-10 mx-auto w-full max-w-3xl border border-white/10 bg-black/60 rounded-xl overflow-hidden shadow-2xl backdrop-blur-md">
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-white/5">
+                <div class="flex gap-2">
+                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">TISE_CORE_ENGINE_v1.0</div>
+            </div>
 
-        <div class="grid grid-cols-4 gap-4 max-w-md mx-auto mb-16 border-y border-white/5 py-8">
-            <div>
-                <div id="days" class="text-3xl font-bold text-white glow-cyan">00</div>
-                <div class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Days</div>
-            </div>
-            <div>
-                <div id="hours" class="text-3xl font-bold text-white glow-cyan">00</div>
-                <div class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Hours</div>
-            </div>
-            <div>
-                <div id="minutes" class="text-3xl font-bold text-white glow-cyan">00</div>
-                <div class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Mins</div>
-            </div>
-            <div>
-                <div id="seconds" class="text-3xl font-bold text-cyan-400 glow-cyan">00</div>
-                <div class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Secs</div>
+            <div id="console" class="h-64 p-4 text-left overflow-y-auto text-[11px] leading-relaxed font-mono">
+                <div class="text-cyan-400">[SYSTEM] Initializing DTIF Sensing Layer...</div>
+                <div class="text-gray-500">[SYSTEM] Establishing 120ms Synchronization Window...</div>
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-            <a href="mailto:heat.terr@ontime-m.com" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-all text-sm uppercase tracking-widest">Request TISE Node Access</a>
-            <a href="https://github.com/heatterr-a11y/ontime-tide-ecosystem" class="px-10 py-4 border border-white/10 rounded-full hover:bg-white/5 transition-all text-gray-400 text-sm uppercase tracking-widest">View Repo</a>
+        <div class="mt-12 grid grid-cols-4 gap-4 max-w-md mx-auto mb-12 border-y border-white/5 py-6">
+            <div><div id="days" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Days</div></div>
+            <div><div id="hours" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Hrs</div></div>
+            <div><div id="minutes" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Min</div></div>
+            <div><div id="seconds" class="text-2xl font-bold text-cyan-400 glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Sec</div></div>
         </div>
 
-        <div class="mt-20 opacity-30 text-[8px] tracking-[0.5em] uppercase text-gray-500">
-            DTIF (BRAIN) | TISE (ENGINE) | TIDE (PROTOCOL) — ARCHITECT: HEATH MICHAEL TERRY
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="mailto:heat.terr@ontime-m.com" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-all text-xs uppercase tracking-widest">Inquire: heat.terr@ontime-m.com</a>
         </div>
     </div>
 
     <script>
-        // Set the TISE Launch Date (Change this to your preferred date)
+        // --- LOGIC SIMULATION ---
+        const consoleEl = document.getElementById('console');
+        const logs = [
+            { t: "[DTIF]", m: "Scanning Absence of Action... 1.2s", c: "text-gray-400" },
+            { t: "[DTIF]", m: "THRESHOLD REACHED: 1.8s Absence Detected.", c: "text-white" },
+            { t: "[TISE]", m: "Syncing 120ms Window... Vector V(0.88, 0.92, 0.85)", c: "text-cyan-400 font-bold" },
+            { t: "[TIDE]", m: "Initiating Settlement: 70% Burn / 30% Rebate", c: "text-green-500" },
+            { t: "[SYSTEM]", m: "Packet Synchronized. Scarcity Verified.", c: "text-gray-500" }
+        ];
+
+        let i = 0;
+        setInterval(() => {
+            const entry = logs[i % logs.length];
+            const div = document.createElement('div');
+            div.className = `log-entry mb-1 ${entry.c}`;
+            div.innerHTML = `<span class="opacity-50">${new Date().toLocaleTimeString()}</span> ${entry.t} ${entry.m}`;
+            consoleEl.appendChild(div);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+            i++;
+        }, 2500);
+
+        // --- COUNTDOWN ---
         const launchDate = new Date("April 19, 2026 12:00:00").getTime();
-
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("days").innerHTML = "TISE";
-                document.getElementById("hours").innerHTML = "IS";
-                document.getElementById("minutes").innerHTML = "NOW";
-                document.getElementById("seconds").innerHTML = "LIVE";
-            }
+        setInterval(() => {
+            const distance = launchDate - new Date().getTime();
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
     </script>
 </body>
