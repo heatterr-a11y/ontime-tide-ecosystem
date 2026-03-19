@@ -3,83 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnTime-TIDE | Live Ecosystem</title>
+    <title>OnTime-TIDE | Live Intent Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #02040a; color: white; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: #02040a; color: white; font-family: 'Courier New', Courier, monospace; transition: background-color 0.8s ease; }
         .glow-cyan { text-shadow: 0 0 15px rgba(34, 211, 238, 0.4); }
         .log-entry { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .tise-pulse { background-color: #083344 !important; } /* Deep Cyan Pulse */
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-[#02040a] p-6 relative overflow-x-hidden">
+<body class="flex flex-col items-center justify-center min-h-screen p-6 relative overflow-x-hidden">
 
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px]"></div>
+    <div id="bg-glow" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[140px] transition-all duration-1000"></div>
 
     <div class="relative z-10 w-full max-w-5xl text-center">
         <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 bg-gradient-to-b from-white to-gray-600 bg-clip-text text-transparent">
             ONTIME-TIDE™
         </h1>
 
-        <div class="mt-10 mx-auto w-full max-w-3xl border border-white/10 bg-black/60 rounded-xl overflow-hidden shadow-2xl backdrop-blur-md">
+        <p class="max-w-2xl mx-auto text-gray-500 text-sm tracking-widest uppercase mb-8">
+            The Unified Stack for <span class="text-cyan-400">Absence-Based Intent</span>
+        </p>
+
+        <div class="mx-auto w-full max-w-3xl border border-white/10 bg-black/80 rounded-xl overflow-hidden shadow-2xl backdrop-blur-md">
             <div class="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-white/5">
                 <div class="flex gap-2">
-                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
-                    <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
-                    <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                    <div id="status-light" class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span class="text-[9px] text-gray-400 uppercase tracking-widest">DTIF_SENSING_ACTIVE</span>
                 </div>
-                <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500">TISE_CORE_ENGINE_v1.0</div>
+                <div class="text-[9px] uppercase tracking-[0.3em] text-gray-500 font-bold">TISE_CORE_v1.0</div>
             </div>
 
-            <div id="console" class="h-64 p-4 text-left overflow-y-auto text-[11px] leading-relaxed font-mono">
-                <div class="text-cyan-400">[SYSTEM] Initializing DTIF Sensing Layer...</div>
-                <div class="text-gray-500">[SYSTEM] Establishing 120ms Synchronization Window...</div>
+            <div id="console" class="h-80 p-6 text-left overflow-y-auto text-[11px] leading-relaxed font-mono">
+                <div class="text-cyan-400 mb-1 font-bold">>>> INITIALIZING ONTIME-TIDE ECOSYSTEM...</div>
+                <div class="text-gray-500 mb-1">>>> TARGET: 1.8s ABSENCE THRESHOLD</div>
+                <div class="text-gray-500 mb-4">>>> PROTOCOL: 70/30 BURN-REBATE ACTIVATED</div>
             </div>
         </div>
 
-        <div class="mt-12 grid grid-cols-4 gap-4 max-w-md mx-auto mb-12 border-y border-white/5 py-6">
-            <div><div id="days" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Days</div></div>
-            <div><div id="hours" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Hrs</div></div>
-            <div><div id="minutes" class="text-2xl font-bold text-white glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Min</div></div>
-            <div><div id="seconds" class="text-2xl font-bold text-cyan-400 glow-cyan">00</div><div class="text-[8px] text-gray-500 uppercase mt-1">Sec</div></div>
+        <div class="mt-8 grid grid-cols-3 gap-4 max-w-3xl mx-auto border-t border-white/5 pt-8 text-center">
+            <div>
+                <div class="text-gray-500 text-[9px] uppercase tracking-widest mb-1">Absence Trigger</div>
+                <div id="timer-display" class="text-xl font-bold text-white">0.0s</div>
+            </div>
+            <div>
+                <div class="text-gray-500 text-[9px] uppercase tracking-widest mb-1">$ONTM Burn Rate</div>
+                <div class="text-xl font-bold text-cyan-400">70%</div>
+            </div>
+            <div>
+                <div class="text-gray-500 text-[9px] uppercase tracking-widest mb-1 TISE Status">Status</div>
+                <div id="tise-status" class="text-xl font-bold text-green-500">SYNCED</div>
+            </div>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="mailto:heat.terr@ontime-m.com" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-all text-xs uppercase tracking-widest">Inquire: heat.terr@ontime-m.com</a>
+        <div class="mt-12 flex flex-col md:flex-row gap-4 justify-center">
+            <a href="mailto:heat.terr@ontime-m.com" class="px-10 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-all text-xs uppercase tracking-widest shadow-xl shadow-cyan-500/10">Request Node Access</a>
+            <a href="https://github.com/heatterr-a11y/ontime-tide-ecosystem" class="px-10 py-4 border border-white/10 rounded-full hover:bg-white/5 transition-all text-gray-400 text-xs uppercase tracking-widest">Audit Repository</a>
         </div>
     </div>
 
     <script>
-        // --- LOGIC SIMULATION ---
         const consoleEl = document.getElementById('console');
-        const logs = [
-            { t: "[DTIF]", m: "Scanning Absence of Action... 1.2s", c: "text-gray-400" },
-            { t: "[DTIF]", m: "THRESHOLD REACHED: 1.8s Absence Detected.", c: "text-white" },
-            { t: "[TISE]", m: "Syncing 120ms Window... Vector V(0.88, 0.92, 0.85)", c: "text-cyan-400 font-bold" },
-            { t: "[TIDE]", m: "Initiating Settlement: 70% Burn / 30% Rebate", c: "text-green-500" },
-            { t: "[SYSTEM]", m: "Packet Synchronized. Scarcity Verified.", c: "text-gray-500" }
-        ];
+        const timerDisplay = document.getElementById('timer-display');
+        const statusLight = document.getElementById('status-light');
+        const tiseStatus = document.getElementById('tise-status');
+        const bgGlow = document.getElementById('bg-glow');
+        
+        let absenceStartTime = Date.now();
+        let absenceTriggered = false;
 
-        let i = 0;
-        setInterval(() => {
-            const entry = logs[i % logs.length];
+        function addLog(msg, colorClass = "text-gray-400") {
             const div = document.createElement('div');
-            div.className = `log-entry mb-1 ${entry.c}`;
-            div.innerHTML = `<span class="opacity-50">${new Date().toLocaleTimeString()}</span> ${entry.t} ${entry.m}`;
+            div.className = `log-entry mb-1 ${colorClass}`;
+            div.innerHTML = `<span class="opacity-30">${new Date().toLocaleTimeString()}</span> ${msg}`;
             consoleEl.appendChild(div);
             consoleEl.scrollTop = consoleEl.scrollHeight;
-            i++;
-        }, 2500);
+        }
 
-        // --- COUNTDOWN ---
-        const launchDate = new Date("April 19, 2026 12:00:00").getTime();
+        function resetDTIF() {
+            absenceStartTime = Date.now();
+            document.body.classList.remove('tise-pulse');
+            statusLight.classList.replace('bg-cyan-500', 'bg-green-500');
+            tiseStatus.innerHTML = "SYNCED";
+            tiseStatus.className = "text-xl font-bold text-green-500";
+            bgGlow.style.backgroundColor = "rgba(34, 211, 238, 0.05)";
+            
+            if (absenceTriggered) {
+                addLog(">>> ACTION DETECTED. Resetting DTIF Sensors.", "text-yellow-500/50");
+                absenceTriggered = false;
+            }
+        }
+
+        // Logic Loop
         setInterval(() => {
-            const distance = launchDate - new Date().getTime();
-            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
-        }, 1000);
+            const elapsed = ((Date.now() - absenceStartTime) / 1000).toFixed(1);
+            timerDisplay.innerHTML = `${elapsed}s`;
+
+            if (elapsed >= 1.8 && !absenceTriggered) {
+                absenceTriggered = true;
+                document.body.classList.add('tise-pulse');
+                statusLight.classList.replace('bg-green-500', 'bg-cyan-500');
+                tiseStatus.innerHTML = "BREACHED";
+                tiseStatus.className = "text-xl font-bold text-cyan-400 animate-pulse";
+                bgGlow.style.backgroundColor = "rgba(34, 211, 238, 0.2)";
+                
+                addLog("[DTIF] 1.8s THRESHOLD BREACHED. Absence confirmed.", "text-white font-bold");
+                addLog("[TISE] Synchronizing 120ms Micro-Decision Window...", "text-cyan-400");
+                addLog("[TIDE] Calculating Settlement: 70% Burn initiated.", "text-green-500");
+            }
+        }, 100);
+
+        window.addEventListener('mousemove', resetDTIF);
+        window.addEventListener('keydown', resetDTIF);
     </script>
 </body>
 </html>
