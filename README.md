@@ -40,3 +40,12 @@ The $ONTM settlement layer that incentivizes high-velocity participation.
 ├── tide-protocol/     # Solidity Smart Contracts (The Economy)
 ├── interface/         # Next.js/Tailwind Frontend (The Face)
 └── LICENSE            # Proprietary Source-Available License
+
+---
+
+## 📬 Institutional & Developer Inquiries
+The OnTime-TIDE™ unified stack is currently available for private institutional audit and node-access requests. 
+
+**Lead Architect:** Heath Michael Terry  
+**Direct:** [heat.terr@ontime-m.com](mailto:heat.terr@ontime-m.com)  
+**Official Portal:** [www.ontime-m.com](https://www.ontime-m.com)
